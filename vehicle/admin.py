@@ -1,12 +1,12 @@
 from django.contrib import admin
-from . import models
+from .models import Vehicle
 
-class Driver(admin.ModelAdmin):
-    list_display = ['nome_motorista', 'idade', 'data_registro', 'data_atualizacao', 'placa']
+class VehicleAdmin(admin.ModelAdmin):
+    list_display = ['nome_motorista', 'user', 'placa', 'data_registro', 'data_atualizacao', ]
     list_display_links = ['nome_motorista', 'user', 'placa']
-    search_fields = ['cpf']
+    search_fields = ['nome_motorista', 'placa']
 
 
 # Register your models here.
-admin.site.register(models.Vehicle)
+admin.site.register(Vehicle, VehicleAdmin)
 

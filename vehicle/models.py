@@ -4,18 +4,17 @@ from user.models import User
 
 # Create your models here.
 class Vehicle(models.Model):
-    cpf = models.CharField("CPF", max_length=14, unique=True)
-    nome_motorista = models.CharField(max_length=100)
-    idade = models.IntegerField()
-    user = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name="Usuário")
-    placa = models.CharField( max_length=8,)
-    tipo = models.CharField( max_length=20,)
-    marca = models.CharField( max_length=20,)
-    modelo_veiculo = models.CharField(max_length=20, verbose_name="Modelo veículo",)
-    cor = models.CharField(max_length=20,)
-    data_registro = models.DateTimeField(auto_now_add=True)
-    data_atualizacao = models.DateTimeField(auto_now_add=True, verbose_name="Data atualização")
+    nome_motorista = models.CharField(verbose_name="Nome Motorista", max_length=100)
+    idade = models.IntegerField(verbose_name="Idade" )
+    user = models.ForeignKey(User, verbose_name="Usuário", on_delete=models.CASCADE)
+    placa = models.CharField(verbose_name="Placa", max_length=8,)
+    tipo = models.CharField(verbose_name="Tipo", max_length=20,)
+    marca = models.CharField(verbose_name="Marca", max_length=20,)
+    modelo_veiculo = models.CharField(verbose_name="Modelo veículo", max_length=20, )
+    cor = models.CharField(verbose_name="Cor", max_length=20,)
+    data_registro = models.DateTimeField(verbose_name="Data Registro", auto_now_add=True)
+    data_atualizacao = models.DateTimeField(verbose_name="Data Atualização", auto_now=True)
   
-
+    #on_delete=models.CASCADE
     def __str__(self):
         return self.placa

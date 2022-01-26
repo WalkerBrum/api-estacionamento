@@ -1,8 +1,8 @@
 from rest_framework import serializers
-from .. import models
+from parking.models import Parking
 
 class ParkingSerializer(serializers.ModelSerializer):
     class Meta:
-        model = models.Parking
+        model = Parking
         # Dados da API
         fields = '__all__'
